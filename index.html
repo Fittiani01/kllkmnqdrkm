@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>كلكم نقدركم - شهادة تقدير</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; background: #f8f8f8; }
+    .container { margin-top: 50px; }
+    input { padding: 10px; font-size: 18px; width: 300px; }
+    button { padding: 10px 20px; font-size: 18px; background-color: #5c1033; color: white; border: none; cursor: pointer; margin-top: 20px; }
+    canvas { display: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>كلكم نقدركم</h1>
+    <p>أدخل اسم المعلم لإهدائه شهادة تقدير</p>
+    <input type="text" id="teacherName" placeholder="مثال: الأستاذ محمد العلي" />
+    <br />
+    <button onclick="generateCertificate()">تحميل الشهادة</button>
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    async function generateCertificate() {
+      const { jsPDF } = window.jspdf;
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      const img = new Image();
+      img.src = "Certificate-01.png";
+      img.onload = function () {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+
+        const name = document.getElementById("teacherName").value.trim();
+        if (!name) {
+          alert("يرجى إدخال اسم المعلم");
+          return;
+        }
+
+        ctx.font = "48px 'TheSansArabic'";
+        ctx.fillStyle = "#5c1033";
+        ctx.textAlign = "center";
+        ctx.fillText(name, canvas.width / 2, canvas.height / 2 + 20);
+
+        const imgData = canvas.toDataURL("image/jpeg", 1.0);
+        const pdf = new jsPDF({
+          orientation: "landscape",
+          unit: "px",
+          format: [canvas.width, canvas.height]
+        });
+        pdf.addImage(imgData, "JPEG", 0, 0, canvas.width, canvas.height);
+        pdf.save("shahada.pdf");
+      };
+    }
+  </script>
+</body>
+</html>
