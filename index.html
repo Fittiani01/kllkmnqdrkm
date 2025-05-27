@@ -14,19 +14,25 @@
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       direction: rtl;
       text-align: center;
-      min-height: 100vh;
       margin: 0;
       padding: 0;
-      overflow-x: hidden;
+      min-height: 100vh;
+      height: 100vh;
+      overflow: hidden;  /* يمنع Scroll نهائيًا */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     .container {
-      margin: 18px auto 12px auto;
       background: #fff;
       border-radius: 22px;
       box-shadow: 0 4px 32px #b01e5530, 0 2px 8px #0001;
       max-width: 990px;
-      padding: 22px 8px 16px 8px;
+      width: 100%;
+      padding: 10px 8px 8px 8px;
       border: 1.5px solid #ede3e7;
+      margin: 0;
     }
     .top-message {
       margin-bottom: 18px;
@@ -126,8 +132,6 @@
     .download-btn:hover {
       background: #801242;
     }
-
-    /* الكود السحري: إذا الشاشة أصغر من الشهادة صغرها تلقائي بدون تغيير تنسيقات النص */
     @media (max-width: 1000px) {
       .certificate-preview {
         width: 98vw !important;
@@ -153,7 +157,7 @@
     <!-- النص التوضيحي فوق الشهادة -->
     <div class="top-message">
       جمعية المبادرات المتميزة في المسؤولية الاجتماعية – مبادر<br>
-      نطلق حملة <b>كلنا نقدرك</b> لتكريم أصحاب الأثر والتفاني.<br>
+      أطلق حملة <b>كلنا نقدرك</b> لتكريم أصحاب الأثر والتفاني.<br>
       <span style="color:#666;font-size:.96em">لكل من أنار دربنا بعلمه... هذا الامتنان لا يُطفأ.</span>
     </div>
     <h2>شهادة تقدير</h2>
