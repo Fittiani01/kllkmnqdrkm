@@ -1,29 +1,137 @@
-.name-teacher {
-  position: absolute;
-  top: 203px;         /* نزّل الاسم شوي */
-  left: 0;
-  width: 100%;
-  font-size: 1.4em;   /* صغّر الخط */
-  font-family: 'BahijBold', Tahoma, Arial, sans-serif;
-  color: #b01e55;
-  font-weight: bold;
-  text-align: center; /* الاسم بالنص */
-  letter-spacing: 1px;
-  pointer-events: none;
-  user-select: none;
-}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>شهادة تقدير</title>
+  <style>
+    @font-face {
+      font-family: 'BahijBold';
+      src: url('ArbFONTS-Bahij_TheSansArabic-Bold.ttf');
+      font-weight: bold;
+    }
+    body {
+      background: #f6f6f6;
+      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
+      direction: rtl;
+      text-align: center;
+    }
+    .container {
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 8px #0001;
+      max-width: 950px;
+      padding: 24px 16px;
+    }
+    .input-row {
+      margin: 20px auto 15px auto;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .input-row input {
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: 1px solid #b01e55;
+      font-size: 1.1em;
+      min-width: 180px;
+      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
+      text-align: center;
+    }
+    .certificate-preview {
+      position: relative;
+      width: 900px;
+      max-width: 98vw;
+      margin: 35px auto 20px auto;
+      background: #eee;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .certificate-preview img {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+    }
+    /* اسم المعلم بالنص */
+    .name-teacher {
+      position: absolute;
+      top: 203px; /* عدل هذا الرقم حسب التصميم */
+      left: 0;
+      width: 100%;
+      font-size: 1.4em;
+      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
+      color: #b01e55;
+      font-weight: bold;
+      text-align: center;
+      letter-spacing: 1px;
+      pointer-events: none;
+      user-select: none;
+      direction: rtl;
+    }
+    /* اسم الطالب يمين تحت */
+    .name-student {
+      position: absolute;
+      right: 55px;
+      width: 55%;
+      bottom: 35px;
+      font-size: 1.2em;
+      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
+      color: #b01e55;
+      font-weight: bold;
+      text-align: right;
+      pointer-events: none;
+      user-select: none;
+      direction: rtl;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .download-btn {
+      background: #b01e55;
+      color: #fff;
+      font-size: 1.2em;
+      padding: 12px 32px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 18px;
+      margin-bottom: 12px;
+      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>شهادة تقدير</h2>
+    <div class="input-row">
+      <input id="teacherName" type="text" placeholder="اسم المعلم" oninput="updateNames()" />
+      <input id="studentName" type="text" placeholder="اسم الطالب" oninput="updateNames()" />
+    </div>
+    <div class="certificate-preview" id="certificatePreview">
+      <img src="certificate.png" alt="الشهادة">
+      <div class="name-teacher" id="previewTeacher"></div>
+      <div class="name-student" id="previewStudent"></div>
+    </div>
+    <button class="download-btn" onclick="downloadCertificate()">تحميل صورة الشهادة</button>
+  </div>
 
-.name-student {
-  position: absolute;
-  right: 55px;        /* يمين الشهادة */
-  width: 60%;         /* عرض أصغر ليكون على اليمين */
-  bottom: 35px;       /* قريب للحافة السفلية */
-  font-size: 1.2em;   /* أصغر من المعلم */
-  font-family: 'BahijBold', Tahoma, Arial, sans-serif;
-  color: #b01e55;
-  font-weight: bold;
-  text-align: right;  /* محاذاة يمين */
-  pointer-events: none;
-  user-select: none;
-  direction: rtl;
-}
+  <script>
+    function updateNames() {
+      document.getElementById('previewTeacher').textContent = document.getElementById('teacherName').value;
+      document.getElementById('previewStudent').textContent = document.getElementById('studentName').value;
+    }
+
+    function downloadCertificate() {
+      const certificate = document.getElementById('certificatePreview');
+      html2canvas(certificate, { useCORS: true, scale: 2 }).then(function(canvas) {
+        const link = document.createElement('a');
+        link.download = 'certificate.png';
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</body>
+</html>
