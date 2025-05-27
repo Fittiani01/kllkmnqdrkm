@@ -16,18 +16,20 @@
       text-align: center;
       min-height: 100vh;
       margin: 0;
+      padding: 0;
+      overflow-x: hidden;
     }
     .container {
-      margin: 30px auto;
+      margin: 18px auto 12px auto;
       background: #fff;
       border-radius: 22px;
       box-shadow: 0 4px 32px #b01e5530, 0 2px 8px #0001;
       max-width: 990px;
-      padding: 30px 22px 22px 22px;
+      padding: 22px 8px 16px 8px;
       border: 1.5px solid #ede3e7;
     }
     .top-message {
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       color: #b01e55;
       font-size: 1.09em;
       line-height: 1.85em;
@@ -61,7 +63,7 @@
     }
     .certificate-preview {
       position: relative;
-      width: 900px;
+      width: 900px;              /* ثابت على الشاشات الكبيرة */
       max-width: 98vw;
       margin: 35px auto 20px auto;
       background: #eee;
@@ -76,7 +78,6 @@
       display: block;
       border-radius: 12px;
     }
-    /* اسم المعلم بالنص */
     .name-teacher {
       position: absolute;
       top: 260px;
@@ -125,10 +126,24 @@
     .download-btn:hover {
       background: #801242;
     }
+
+    /* الكود السحري: إذا الشاشة أصغر من الشهادة صغرها تلقائي بدون تغيير تنسيقات النص */
     @media (max-width: 1000px) {
       .certificate-preview {
-        width: 99vw;
-        min-width: 0;
+        width: 98vw !important;
+        min-width: 0 !important;
+      }
+      .name-teacher, .name-student {
+        font-size: 1.1em !important;
+      }
+    }
+    @media (max-width: 650px) {
+      .certificate-preview {
+        width: 99vw !important;
+        min-width: 0 !important;
+      }
+      .name-teacher, .name-student {
+        font-size: 1em !important;
       }
     }
   </style>
@@ -138,7 +153,7 @@
     <!-- النص التوضيحي فوق الشهادة -->
     <div class="top-message">
       جمعية المبادرات المتميزة في المسؤولية الاجتماعية – مبادر<br>
-      أطلق حملة <b>كلنا نقدرك</b> لتكريم أصحاب الأثر والتفاني.<br>
+      نطلق حملة <b>كلنا نقدرك</b> لتكريم أصحاب الأثر والتفاني.<br>
       <span style="color:#666;font-size:.96em">لكل من أنار دربنا بعلمه... هذا الامتنان لا يُطفأ.</span>
     </div>
     <h2>شهادة تقدير</h2>
