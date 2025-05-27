@@ -14,28 +14,20 @@
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       direction: rtl;
       text-align: center;
-      margin: 0;
-      padding: 0;
       min-height: 100vh;
-      height: 100vh;
-      overflow: hidden;  /* يمنع Scroll نهائيًا */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      margin: 0;
     }
     .container {
+      margin: 30px auto;
       background: #fff;
       border-radius: 22px;
       box-shadow: 0 4px 32px #b01e5530, 0 2px 8px #0001;
       max-width: 990px;
-      width: 100%;
-      padding: 10px 8px 8px 8px;
+      padding: 30px 22px 22px 22px;
       border: 1.5px solid #ede3e7;
-      margin: 0;
     }
     .top-message {
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       color: #b01e55;
       font-size: 1.09em;
       line-height: 1.85em;
@@ -69,7 +61,7 @@
     }
     .certificate-preview {
       position: relative;
-      width: 900px;              /* ثابت على الشاشات الكبيرة */
+      width: 900px;
       max-width: 98vw;
       margin: 35px auto 20px auto;
       background: #eee;
@@ -84,6 +76,7 @@
       display: block;
       border-radius: 12px;
     }
+    /* اسم المعلم بالنص */
     .name-teacher {
       position: absolute;
       top: 260px;
@@ -134,20 +127,8 @@
     }
     @media (max-width: 1000px) {
       .certificate-preview {
-        width: 98vw !important;
-        min-width: 0 !important;
-      }
-      .name-teacher, .name-student {
-        font-size: 1.1em !important;
-      }
-    }
-    @media (max-width: 650px) {
-      .certificate-preview {
-        width: 99vw !important;
-        min-width: 0 !important;
-      }
-      .name-teacher, .name-student {
-        font-size: 1em !important;
+        width: 99vw;
+        min-width: 0;
       }
     }
   </style>
@@ -170,7 +151,7 @@
       <div class="name-teacher" id="previewTeacher"></div>
       <div class="name-student" id="previewStudent"></div>
     </div>
-    <button class="download-btn" onclick="downloadCertificate()">تحميل الشهادة</button>
+    <button class="download-btn" onclick="downloadCertificate()">تحميل صورة الشهادة</button>
   </div>
 
   <script>
