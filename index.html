@@ -69,20 +69,19 @@
       user-select: none;
       direction: rtl;
     }
-   .name-student {
+  .name-student {
   position: absolute;
-  left: 55px;              /* خليها على الشمال (يسار) */
-  bottom: 65px;            /* ارفع الاسم لفوق شوي */
-  width: 45%;
+  right: 55px;           /* يمين الشهادة */
+  bottom: 70px;          /* ارفع الاسم لفوق شوي (زيد الرقم إذا بدك أعلى) */
+  width: 45%;            /* عرض الاسم - زيد/نقص حسب ما تريد */
   font-size: 1.2em;
   font-family: 'BahijBold', Tahoma, Arial, sans-serif;
   color: #b01e55;
   font-weight: bold;
-  text-align: left;        /* محاذاة لليسار */
+  text-align: right;     /* محاذاة يمين */
   pointer-events: none;
   user-select: none;
-  direction: ltr;          /* هذا مهم حتى يبدأ النص من الشمال لليمين (خصوصًا للأرقام) */
-  unicode-bidi: plaintext; /* يحافظ على ترتيب العربي والأرقام */
+  direction: rtl;        /* عربي من اليمين لليسار */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
