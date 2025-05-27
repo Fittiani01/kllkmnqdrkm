@@ -69,24 +69,22 @@
       user-select: none;
       direction: rtl;
     }
-    /* اسم الطالب يمين تحت */
     .name-student {
-      position: absolute;
-      Right: 900px;
-       top: 150px;
-      width: 55%;
-      bottom: 35px;
-      font-size: 1.2em;
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
-      color: #b01e55;
-      font-weight: bold;
-      text-align: right;
-      pointer-events: none;
-      user-select: none;
-      direction: rtl;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+  position: absolute;
+  left: 55px;             /* خليها على الشمال (يسار) */
+  bottom: 35px;           /* قريبة من أسفل الشهادة */
+  width: 45%;             /* خليها أضيق شوي حتى ما تطلع بالنص */
+  font-size: 1.2em;
+  font-family: 'BahijBold', Tahoma, Arial, sans-serif;
+  color: #b01e55;
+  font-weight: bold;
+  text-align: left;       /* خلي النص محاذي لليسار */
+  pointer-events: none;
+  user-select: none;
+  direction: rtl;
+  white-space: nowrap;
+  overflow: hidden;
+  text-ove
     }
     .download-btn {
       background: #b01e55;
