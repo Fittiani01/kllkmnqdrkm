@@ -76,32 +76,30 @@
       display: block;
       border-radius: 14px;
     }
-    /* اسم المعلم في منتصف الشهادة */
-    .name-teacher {
-      position: absolute;
-      top: 295px;   /* عدل حسب الشهادة */
-      left: 0;
-      width: 100%;
-      font-size: 1.39em;
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
-      color: #b01e55;
-      font-weight: bold;
-      text-align: center;
-      pointer-events: none;
-      user-select: none;
-      direction: rtl;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+ .name-teacher {
+  position: absolute;
+  top: 182px;        /* نزله شوي تحت اللوجو فوق كلمة "كلنا نقدرك" */
+  left: 0;
+  width: 100%;
+  font-size: 1.18em; /* خفف شوي حجم الخط */
+  font-family: 'BahijBold', Tahoma, Arial, sans-serif;
+  color: #b01e55;
+  font-weight: bold;
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+  direction: rtl;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
     <style>
-/* ... باقي الكود مثل ما هو ... */
 .name-student {
   position: absolute;
-  right: 62px;      /* قربه أكتر من الحافة اليمنى */
-  bottom: 44px;     /* نزله لتحت بحيث يبين */
-  width: 45%;
-  font-size: 1.18em;
+  right: 70px;      /* هات الاسم لعند الزاوية اليمين */
+  bottom: 47px;     /* نزله لتحت */
+  width: 38%;       /* خليه بعرض أقل */
+  font-size: 1.13em; /* حجم معقول */
   font-family: 'BahijBold', Tahoma, Arial, sans-serif;
   color: #b01e55;
   font-weight: bold;
@@ -113,8 +111,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* ... كمل باقي الكود نفسه ... */
-</style>
 
     .action-row {
       display: flex;
