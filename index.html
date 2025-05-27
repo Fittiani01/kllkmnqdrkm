@@ -94,24 +94,28 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    /* اسم الطالب في اليمين تحت */
-    .name-student {
-      position: absolute;
-      right: 400px;   /* عدل يمين/شمال حسب الصورة */
-      bottom: 115px;  /* ارفعه لفوق شوي */
-      width: 45%;
-      font-size: 1.18em;
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
-      color: #b01e55;
-      font-weight: bold;
-      text-align: right;
-      pointer-events: none;
-      user-select: none;
-      direction: rtl;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+    <style>
+/* ... باقي الكود مثل ما هو ... */
+.name-student {
+  position: absolute;
+  right: 62px;      /* قربه أكتر من الحافة اليمنى */
+  bottom: 44px;     /* نزله لتحت بحيث يبين */
+  width: 45%;
+  font-size: 1.18em;
+  font-family: 'BahijBold', Tahoma, Arial, sans-serif;
+  color: #b01e55;
+  font-weight: bold;
+  text-align: right;
+  pointer-events: none;
+  user-select: none;
+  direction: rtl;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* ... كمل باقي الكود نفسه ... */
+</style>
+
     .action-row {
       display: flex;
       justify-content: center;
