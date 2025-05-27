@@ -69,23 +69,24 @@
       user-select: none;
       direction: rtl;
     }
-    .name-student {
+   .name-student {
   position: absolute;
-  left: 55px;             /* خليها على الشمال (يسار) */
-  bottom: 35px;           /* قريبة من أسفل الشهادة */
-  width: 45%;             /* خليها أضيق شوي حتى ما تطلع بالنص */
+  left: 55px;              /* خليها على الشمال (يسار) */
+  bottom: 65px;            /* ارفع الاسم لفوق شوي */
+  width: 45%;
   font-size: 1.2em;
   font-family: 'BahijBold', Tahoma, Arial, sans-serif;
   color: #b01e55;
   font-weight: bold;
-  text-align: left;       /* خلي النص محاذي لليسار */
+  text-align: left;        /* محاذاة لليسار */
   pointer-events: none;
   user-select: none;
-  direction: rtl;
+  direction: ltr;          /* هذا مهم حتى يبدأ النص من الشمال لليمين (خصوصًا للأرقام) */
+  unicode-bidi: plaintext; /* يحافظ على ترتيب العربي والأرقام */
   white-space: nowrap;
   overflow: hidden;
-  text-ove
-    }
+  text-overflow: ellipsis;
+}
     .download-btn {
       background: #b01e55;
       color: #fff;
