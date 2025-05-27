@@ -4,9 +4,14 @@
   <meta charset="UTF-8">
   <title>شهادة تقدير</title>
   <style>
+    @font-face {
+      font-family: 'BahijBold';
+      src: url('ArbFONTS-Bahij_TheSansArabic-Bold.ttf');
+      font-weight: bold;
+    }
     body {
       background: #f6f6f6;
-      font-family: Tahoma, Arial, sans-serif;
+      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       direction: rtl;
       text-align: center;
     }
@@ -15,7 +20,7 @@
       background: #fff;
       border-radius: 18px;
       box-shadow: 0 2px 8px #0001;
-      max-width: 900px;
+      max-width: 950px;
       padding: 24px 16px;
     }
     .input-row {
@@ -31,40 +36,51 @@
       border: 1px solid #b01e55;
       font-size: 1.1em;
       min-width: 180px;
+      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
+      text-align: center;
     }
     .certificate-preview {
       position: relative;
-      width: 800px;
+      width: 900px;
       max-width: 98vw;
       margin: 35px auto 20px auto;
       background: #eee;
+      border-radius: 12px;
+      overflow: hidden;
     }
     .certificate-preview img {
       width: 100%;
       display: block;
       border-radius: 12px;
     }
+    /* مكان اسم المعلم */
     .name-teacher {
       position: absolute;
-      top: 265px;
-      right: 0;
+      top: 167px; /* عدّل الرقم حسب ما يناسب مكان الاسم */
+      left: 0;
       width: 100%;
-      font-size: 1.7em;
-      font-weight: bold;
+      font-size: 2.2em;
+      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       color: #b01e55;
+      font-weight: bold;
       text-align: center;
       letter-spacing: 1px;
+      pointer-events: none;
+      user-select: none;
     }
+    /* مكان اسم الطالب */
     .name-student {
       position: absolute;
-      bottom: 68px;
-      right: 0;
+      left: 0;
       width: 100%;
-      font-size: 1.6em;
-      font-weight: bold;
+      bottom: 49px; /* عدّل الرقم حسب ما يناسب مكان الاسم */
+      font-size: 2.0em;
+      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       color: #b01e55;
+      font-weight: bold;
       text-align: center;
-      letter-spacing: 1px;
+      pointer-events: none;
+      user-select: none;
     }
     .download-btn {
       background: #b01e55;
@@ -76,6 +92,7 @@
       cursor: pointer;
       margin-top: 18px;
       margin-bottom: 12px;
+      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
     }
   </style>
 </head>
@@ -87,7 +104,7 @@
       <input id="studentName" type="text" placeholder="اسم الطالب" oninput="updateNames()" />
     </div>
     <div class="certificate-preview" id="certificatePreview">
-      <img src="Certificate-01.png" alt="الشهادة">
+      <img src="d3eb415b-0fd6-46e5-8814-a4cd2228ca30.png" alt="الشهادة">
       <div class="name-teacher" id="previewTeacher"></div>
       <div class="name-student" id="previewStudent"></div>
     </div>
@@ -96,18 +113,13 @@
 
   <script>
     function updateNames() {
-      document.getElementById('previewTeacher').textContent = document.getElementById('teacherName').value
-        ? 'المعلم: ' + document.getElementById('teacherName').value
-        : '';
-      document.getElementById('previewStudent').textContent = document.getElementById('studentName').value
-        ? 'ابنك الطالب / ' + document.getElementById('studentName').value
-        : '';
+      document.getElementById('previewTeacher').textContent = document.getElementById('teacherName').value;
+      document.getElementById('previewStudent').textContent = document.getElementById('studentName').value;
     }
 
-    // تحميل الشهادة كصورة
     function downloadCertificate() {
       const certificate = document.getElementById('certificatePreview');
-      html2canvas(certificate).then(function(canvas) {
+      html2canvas(certificate, { useCORS: true, scale: 2 }).then(function(canvas) {
         const link = document.createElement('a');
         link.download = 'certificate.png';
         link.href = canvas.toDataURL();
@@ -115,7 +127,6 @@
       });
     }
   </script>
-  <!-- مكتبة html2canvas لتحويل العنصر لصورة -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </body>
 </html>
