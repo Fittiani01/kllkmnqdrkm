@@ -17,68 +17,69 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      overflow-y: auto;
+      overflow-x: hidden;
     }
     .container {
       margin: 40px auto;
       background: #fff;
       border-radius: 18px;
-      box-shadow: 0 2px 8px #0001;
-      max-width: 980px;
-      padding: 18px 0 34px 0;
+      box-shadow: 0 2px 16px #0001;
+      max-width: 950px;
+      padding: 24px 16px;
     }
-    .top-box {
-      margin: 0 auto 20px auto;
-      padding: 16px 10px 12px 10px;
-      border-radius: 14px;
-      background: #fdeaf3;
-      border: 1.5px solid #f4d4e6;
+    .notice-box {
+      margin: 0 auto 32px auto;
+      background: #fde7f0;
+      border-radius: 16px;
+      padding: 18px 6px 12px 6px;
+      max-width: 1200px;
       color: #b01e55;
-      font-size: 1.13em;
-      line-height: 1.4;
-      max-width: 900px;
+      font-size: 1.09em;
+      line-height: 1.6;
+      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
+      border: 1.5px solid #fad1e0;
+    }
+    .main-title {
+      font-size: 2em;
+      margin-bottom: 20px;
+      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
     }
     .input-row {
-      margin: 15px auto 10px auto;
+      margin: 20px auto 18px auto;
       display: flex;
       gap: 10px;
       justify-content: center;
       flex-wrap: wrap;
-      max-width: 600px;
     }
     .input-row input {
-      padding: 9px 14px;
+      padding: 11px 22px;
       border-radius: 8px;
       border: 1px solid #b01e55;
-      font-size: 1.08em;
-      min-width: 150px;
+      font-size: 1.13em;
+      min-width: 180px;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       text-align: center;
-      background: #f8f6f8;
     }
     .certificate-preview {
       position: relative;
-      width: 950px;
+      width: 900px;
       max-width: 98vw;
-      aspect-ratio: 950/700;
-      margin: 30px auto 16px auto;
+      margin: 36px auto 25px auto;
       background: #eee;
-      border-radius: 13px;
+      border-radius: 14px;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      box-shadow: 0 2px 14px #e6d4db90;
+      min-height: 650px;
     }
     .certificate-preview img {
       width: 100%;
-      height: auto;
-      border-radius: 13px;
       display: block;
+      border-radius: 14px;
     }
-    /* اسم المعلم بالنص */
+    /* اسم المعلم في منتصف الشهادة */
     .name-teacher {
       position: absolute;
-      top: 260px;
+      top: 295px;   /* عدل حسب الشهادة */
       left: 0;
       width: 100%;
       font-size: 1.39em;
@@ -93,11 +94,11 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    /* اسم الطالب يمين تحت */
+    /* اسم الطالب في اليمين تحت */
     .name-student {
       position: absolute;
-      right: 590px;
-      bottom: 75px;
+      right: 400px;   /* عدل يمين/شمال حسب الصورة */
+      bottom: 115px;  /* ارفعه لفوق شوي */
       width: 45%;
       font-size: 1.18em;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
@@ -111,60 +112,60 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .actions-row {
+    .action-row {
       display: flex;
       justify-content: center;
-      gap: 12px;
-      margin-top: 15px;
-      margin-bottom: 6px;
+      gap: 16px;
+      margin-top: 24px;
+      margin-bottom: 10px;
       flex-wrap: wrap;
     }
     .download-btn,
     .whatsapp-btn {
       background: #b01e55;
       color: #fff;
-      font-size: 1.1em;
-      padding: 10px 26px;
+      font-size: 1.19em;
+      padding: 13px 38px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
-      transition: 0.16s;
-      text-decoration: none;
-      display: inline-block;
+      transition: background 0.2s;
+      margin-bottom: 0px;
+    }
+    .download-btn:hover {
+      background: #920b3a;
     }
     .whatsapp-btn {
-      background: #25D366;
+      background: #25d366;
       color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      margin-right: 4px;
     }
-    .whatsapp-btn svg {
-      width: 1.2em;
-      height: 1.2em;
-      vertical-align: middle;
+    .whatsapp-btn:hover {
+      background: #1ebe5b;
     }
     @media (max-width: 1100px) {
-      .certificate-preview { width: 98vw; }
+      .certificate-preview { width: 98vw; min-width: 310px; }
+      .name-teacher { font-size: 1em; top: 27vw; }
+      .name-student { right: 38vw; font-size: 0.95em; }
     }
-    @media (max-width: 700px) {
-      .container { padding: 7px 2px 24px 2px; }
-      .certificate-preview { border-radius: 8px; }
-      .name-teacher { font-size: 1em; top: 180px; }
-      .name-student { font-size: 0.95em; right: 0; width: 98%; }
-      .top-box { font-size: 0.95em; }
+    @media (max-width: 600px) {
+      .certificate-preview { width: 99vw; min-width: 220px; }
+      .name-teacher { font-size: 0.9em; top: 23vw;}
+      .name-student { right: 27vw; font-size: 0.83em; bottom: 7vw; }
+      .container { padding: 8px 2px; }
+      .action-row { flex-direction: column; gap: 10px; }
     }
   </style>
 </head>
 <body>
+  <div class="notice-box">
+    جمعية المبادرات المتميزة في المسؤولية الاجتماعية – مبادر<br>
+    أطلق حملة كلنا نقدرك لتكريم أصحاب الأثر والتأثير.<br>
+    لكل من أثار دربنا بعلمه... هذا الامتنان لا يُطفأ.
+  </div>
   <div class="container">
-    <div class="top-box">
-      جمعية المبادرات المتميزة في المسؤولية الاجتماعية – مبادر<br>
-      أطلق حملة <b>كلنا نقدرك</b> لتكريم أصحاب الأثر والتأثير.<br>
-      <span style="font-size:0.93em;color:#7a2840;">“كل من أنار دربنا بعلمه... هذا الامتنان لا يُطفأ.”</span>
-    </div>
-    <h2 style="margin-bottom:17px;">شهادة تقدير</h2>
+    <div class="main-title">شهادة تقدير</div>
     <div class="input-row">
       <input id="studentName" type="text" placeholder="اسم الطالب" oninput="updateNames()" />
       <input id="teacherName" type="text" placeholder="اسم المعلم" oninput="updateNames()" />
@@ -174,23 +175,18 @@
       <div class="name-teacher" id="previewTeacher"></div>
       <div class="name-student" id="previewStudent"></div>
     </div>
-    <div class="actions-row">
+    <div class="action-row">
       <button class="download-btn" onclick="downloadCertificate()">تحميل الشهادة</button>
-      <a class="whatsapp-btn" id="whatsappSend" href="#" target="_blank" title="إرسال عبر واتساب">
-        <svg viewBox="0 0 32 32"><path fill="#fff" d="M16 2.7A13.2 13.2 0 0 1 29.2 15.8c0 2.5-.7 4.9-2.1 7L27 23.3l1.1 4.4a1.5 1.5 0 0 1-1.8 1.8l-4.4-1.1-.5.3A13.2 13.2 0 1 1 16 2.7zm0 2.6a10.6 10.6 0 0 0-9.5 15.3c.1.3.2.6 0 .8l-1.2 4.9 5-1.2c.2 0 .4 0 .7.1a10.7 10.7 0 1 0 4.9-20zm-4.2 4.8c.5 0 .9.3 1.4 1.1l.8 1.7c.2.4.3.7.2 1.1-.3.5-.7 1-1.1 1.5-.2.2-.3.3-.2.6.6 1.4 2 3.2 3.3 3.8.3.2.4.2.6 0l1.5-1c.2-.2.5-.2.8-.1.3.1 1.7.8 2 1 .3.2.5.2.5.5-.2.7-1 2.3-2.5 2.7-1.2.3-3-.1-5-1.7a10 10 0 0 1-3-4.2c-.6-1.2-.8-2.1-.5-2.8.2-.6 1-2.3 1.4-2.3z"/></svg>
-        واتساب
-      </a>
+      <button class="whatsapp-btn" onclick="showWhatsappAlert()">واتساب</button>
     </div>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
   <script>
     function updateNames() {
       document.getElementById('previewTeacher').textContent = document.getElementById('teacherName').value;
       document.getElementById('previewStudent').textContent = document.getElementById('studentName').value;
-      // تحديث رابط الواتساب
-      let text = "شهادة تقدير\nالمعلم: " + (document.getElementById('teacherName').value || '---') + "\nالطالب: " + (document.getElementById('studentName').value || '---');
-      document.getElementById('whatsappSend').href = "https://wa.me/?text=" + encodeURIComponent(text);
     }
+
     function downloadCertificate() {
       const certificate = document.getElementById('certificatePreview');
       html2canvas(certificate, { useCORS: true, scale: 2 }).then(function(canvas) {
@@ -200,8 +196,12 @@
         link.click();
       });
     }
-    // عشان الرابط أول ما يفتح يكون صحيح
-    updateNames();
+
+    function showWhatsappAlert() {
+      alert('لتتمكن من إرسال الشهادة على واتساب:\n1. اضغط "تحميل الشهادة" أولاً\n2. ثم افتح محادثة واتساب وارسل صورة الشهادة يدوياً.\n(واتساب يمنع المواقع من إرسال الملفات مباشرة)');
+      window.open('https://wa.me/', '_blank');
+    }
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </body>
 </html>
