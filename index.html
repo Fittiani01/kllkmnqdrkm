@@ -13,11 +13,8 @@
       background: #f6f6f6;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       direction: rtl;
+      margin: 0; padding: 0;
       text-align: center;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      overflow-x: hidden;
     }
     .container {
       margin: 40px auto;
@@ -76,13 +73,14 @@
       display: block;
       border-radius: 14px;
     }
-    /* اسم المعلم في منتصف الشهادة */
+    /* اسم المعلم */
     .name-teacher {
       position: absolute;
-      top: 265px;
-      left: 0;
       width: 100%;
-      font-size: 1.39em;
+      left: 0;
+      top: 30%; /* نسبة من الصورة - عدلها لو بدك أدق */
+      transform: translateY(-50%);
+      font-size: 1.4em;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       color: #b01e55;
       font-weight: bold;
@@ -93,24 +91,34 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      z-index: 2;
     }
-    /* صف اسم الطالب ويساره ثابت */
+    /* صف اسم الطالب ثابت تحت الشهادة */
     .student-row {
       position: absolute;
-      bottom: 36px;
-      left: 44px;
-      font-size: 1.08em;
+      width: 95%;
+      left: 2.5%;
+      bottom: 38px; /* نسبة ثابتة عن الصورة */
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      font-size: 1.1em;
       color: #b01e55;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       font-weight: bold;
       direction: rtl;
-      text-align: left;
       pointer-events: none;
       user-select: none;
       white-space: nowrap;
+      z-index: 2;
     }
     .student-row .label {
       margin-left: 8px;
+      white-space: nowrap;
+    }
+    .student-row .student-name {
+      white-space: nowrap;
+      direction: rtl;
     }
     .download-btn {
       background: #b01e55;
@@ -129,14 +137,14 @@
     }
     @media (max-width: 1100px) {
       .certificate-preview { width: 98vw; min-width: 310px; }
-      .name-teacher { font-size: 1em; top: 27vw; }
-      .student-row { font-size: 0.95em; bottom: 16px; left: 16px; }
+      .name-teacher { font-size: 1em; top: 28%; }
+      .student-row { font-size: 0.95em; bottom: 16px;}
     }
     @media (max-width: 600px) {
-      .certificate-preview { width: 99vw; min-width: 220px; min-height: 360px; }
-      .name-teacher { font-size: 0.89em; top: 26vw;}
-      .student-row { font-size: 0.85em; bottom: 9vw; left: 12px;}
-      .container { padding: 8px 2px; }
+      .certificate-preview { width: 99vw; min-width: 220px; min-height: 360px;}
+      .name-teacher { font-size: 0.89em; top: 26%; }
+      .student-row { font-size: 0.82em; bottom: 8px;}
+      .container { padding: 8px 2px;}
     }
   </style>
 </head>
@@ -157,18 +165,16 @@
       <div class="name-teacher" id="previewTeacher"></div>
       <div class="student-row">
         <span class="label">ابنك الطالب /</span>
-        <span id="previewStudent"></span>
+        <span class="student-name" id="previewStudent"></span>
       </div>
     </div>
     <button class="download-btn" onclick="downloadCertificate()">تحميل صورة الشهادة</button>
   </div>
-
   <script>
     function updateNames() {
       document.getElementById('previewTeacher').textContent = document.getElementById('teacherName').value;
       document.getElementById('previewStudent').textContent = document.getElementById('studentName').value;
     }
-
     function downloadCertificate() {
       const certificate = document.getElementById('certificatePreview');
       html2canvas(certificate, { useCORS: true, scale: 2 }).then(function(canvas) {
