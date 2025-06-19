@@ -1,94 +1,57 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <title>شهادة تقدير</title>
-  <style>
-    @font-face {
-      font-family: 'BahijBold';
-      src: url('ArbFONTS-Bahij_TheSansArabic-Bold.ttf');
-      font-weight: bold;
+<!-- ... باقي الصفحة نفسها ... -->
+<style>
+  /* ... باقي CSS ... */
+  .certificate-preview {
+    position: relative;
+    width: 900px;
+    max-width: 98vw;
+    margin: 36px auto 25px auto;
+    background: #eee;
+    border-radius: 14px;
+    overflow: hidden;
+    min-height: 650px;
+    box-shadow: 0 2px 14px #e6d4db90;
+  }
+  .student-row {
+    position: absolute;
+    bottom: 36px;
+    left: 44px;
+    font-size: 1.08em;
+    color: #b01e55;
+    font-family: 'BahijBold', Tahoma, Arial, sans-serif;
+    font-weight: bold;
+    direction: rtl;
+    text-align: left;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+  }
+  .student-row .label {
+    margin-left: 8px;
+  }
+  @media (max-width: 600px) {
+    .certificate-preview { min-height: 350px; }
+    .student-row { 
+      bottom: 16px; 
+      left: 16px;
+      font-size: 0.93em; 
     }
-    body {
-      background: #f6f6f6;
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
-      direction: rtl;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-    }
-    .container {
-      margin: 40px auto;
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 2px 16px #0001;
-      max-width: 950px;
-      padding: 24px 16px;
-    }
-    .certificate-preview {
-      position: relative;
-      width: 900px;
-      max-width: 98vw;
-      margin: 36px auto 25px auto;
-      background: #eee;
-      border-radius: 14px;
-      overflow: hidden;
-      min-height: 650px;
-      box-shadow: 0 2px 14px #e6d4db90;
-    }
-    .certificate-preview img {
-      width: 100%;
-      display: block;
-      border-radius: 14px;
-    }
-    /* اسم المعلم بالنص */
-    .name-teacher {
-      position: absolute;
-      top: 39%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      font-size: 1.4em;
-      color: #b01e55;
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
-      font-weight: bold;
-      text-align: center;
-      pointer-events: none;
-      user-select: none;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    /* سطر الطالب يسار تحت */
-    .student-row {
-      position: absolute;
-      bottom: 6.5%;
-      left: 7%;
-      display: flex;
-      align-items: center;
-      font-size: 1.08em;
-      color: #b01e55;
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
-      font-weight: bold;
-      text-align: left;
-      gap: 0.4em;
-      direction: rtl;
-      pointer-events: none;
-      user-select: none;
-      white-space: nowrap;
-    }
-    @media (max-width: 600px) {
-      .container { padding: 8px 2px; }
-      .certificate-preview { width: 99vw; min-width: 220px; min-height: 55vw; }
-      .name-teacher { font-size: 1em; width: 98%; top: 38%; }
-      .student-row { font-size: 0.91em; bottom: 7vw; left: 5vw;}
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h2>شهادة تقدير</h2>
-    <div style="margin-bottom:18px;">
-      <input id="teacherName" type="text" placeholder="اسم المعلم" oninput="updateNames()" style="padding:11px 18px; border-radius:8px; border:1px solid #b01e55; font-size:1.1em; min-width:150px; margin:2px;">
-      <input id="stu
+    .name-teacher { font-size: 1em; top: 38%; }
+  }
+</style>
+<!-- ... -->
+<div class="certificate-preview" id="certificatePreview">
+  <img src="certificate.png" alt="الشهادة">
+  <div class="name-teacher" id="previewTeacher"></div>
+  <div class="student-row">
+    <span class="label">ابنك الطالب /</span>
+    <span id="previewStudent"></span>
+  </div>
+</div>
+<!-- ... باقي الصفحة ... -->
+<script>
+  function updateNames() {
+    document.getElementById('previewTeacher').textContent = document.getElementById('teacherName').value;
+    document.getElementById('previewStudent').textContent = document.getElementById('studentName').value;
+  }
+</script>
