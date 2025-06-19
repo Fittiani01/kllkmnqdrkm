@@ -10,7 +10,7 @@
       font-weight: bold;
     }
     body {
-      background: #f6f6f6;
+      background: #ddebf2;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       margin: 0;
       padding: 0;
@@ -69,9 +69,6 @@
       overflow: hidden;
       box-shadow: 0 2px 14px #e6d4db90;
       min-height: 650px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
     }
     .certificate-preview img {
       position: absolute;
@@ -83,13 +80,12 @@
       z-index: 1;
       display: block;
     }
-    /* اسم المعلم بالنص */
     .name-teacher {
       position: absolute;
-      top: 41.5%;
+      top: 43.5%;
       left: 0;
       width: 100%;
-      font-size: 2.1vw;
+      font-size: 2vw;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       color: #b01e55;
       font-weight: bold;
@@ -100,11 +96,11 @@
       line-height: 1.2;
       z-index: 2;
     }
-    /* اسم الطالب في اليسار تحت */
+    /* اسم الطالب ثابت كنسبة من ارتفاع الشهادة يسار تحت */
     .bottom-bar {
       position: absolute;
-      left: 40px;
-      bottom: 40px;
+      left: 5.5%;
+      bottom: 8%;
       z-index: 2;
       display: flex;
       align-items: flex-end;
@@ -112,7 +108,7 @@
     }
     .student-label {
       color: #b01e55;
-      font-size: 1.3em;
+      font-size: 1.25em;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       font-weight: bold;
       pointer-events: none;
@@ -121,7 +117,7 @@
     }
     .student-name {
       color: #b01e55;
-      font-size: 1.3em;
+      font-size: 1.25em;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       font-weight: bold;
       pointer-events: none;
@@ -147,7 +143,7 @@
     @media (max-width: 700px) {
       .certificate-preview { min-width: 200px; }
       .name-teacher { font-size: 4vw;}
-      .bottom-bar { left: 6vw; bottom: 4vw;}
+      .bottom-bar { left: 6vw; bottom: 7vw;}
       .student-label, .student-name { font-size: 4vw;}
     }
   </style>
@@ -166,4 +162,29 @@
     </div>
     <div class="certificate-preview" id="certificatePreview">
       <img src="certificate.png" alt="الشهادة">
-      <div class="name-teacher"
+      <div class="name-teacher" id="previewTeacher"></div>
+      <div class="bottom-bar">
+        <span class="student-label">ابنك الطالب /</span>
+        <span class="student-name" id="previewStudent"></span>
+      </div>
+    </div>
+    <button class="download-btn" onclick="downloadCertificate()">تحميل صورة الشهادة</button>
+  </div>
+  <script>
+    function updateNames() {
+      document.getElementById('previewTeacher').textContent = document.getElementById('teacherName').value;
+      document.getElementById('previewStudent').textContent = document.getElementById('studentName').value;
+    }
+    function downloadCertificate() {
+      const certificate = document.getElementById('certificatePreview');
+      html2canvas(certificate, { useCORS: true, scale: 2 }).then(function(canvas) {
+        const link = document.createElement('a');
+        link.download = 'certificate.png';
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</body>
+</html>
