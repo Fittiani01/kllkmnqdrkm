@@ -79,10 +79,10 @@
     /* اسم المعلم بالنص */
     .name-teacher {
       position: absolute;
-      top: 260px;
+      top: 265px;              /* ← عدل هون: نزّل أو ارفع اسم المعلم */
       left: 0;
       width: 100%;
-      font-size: 1.4em;
+      font-size: 1.4em;        /* ← عدل هون: حجم الخط */
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       color: #b01e55;
       font-weight: bold;
@@ -94,13 +94,13 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    /* اسم الطالب يمين تحت */
+    /* اسم الطالب */
     .name-student {
       position: absolute;
-      right: 110px;   /* يمين الشهادة */
-      bottom: 65px;   /* تحت الشهادة */
+      right: 110px;            /* ← عدل هون: زح الاسم يمين أو شمال */
+      bottom: 65px;            /* ← عدل هون: نزّل أو ارفع اسم الطالب */
       width: 45%;
-      font-size: 1.18em;
+      font-size: 1.18em;       /* ← عدل هون: حجم الخط */
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       color: #b01e55;
       font-weight: bold;
@@ -139,18 +139,19 @@
     .download-btn:hover {
       background: #920b3a;
     }
-    /* responsive */
+
+    /* responsive موبايل */
     @media (max-width: 600px) {
       .certificate-preview { width: 99vw; min-width: 220px; min-height: 62vw; }
       .name-teacher {
-        top: 44vw !important;     /* ينزل لتحت */
-        font-size: 1.08em !important;
+        top: 44vw !important;   /* ← عدل هون: زود الرقم ينزل الاسم تحت */
+        font-size: 1em !important;
       }
       .name-student {
         right: auto !important;
-        left: 7vw !important;     /* يزيح عالشمال */
+        left: 12vw !important;  /* ← عدل هون: زود الرقم الاسم يزيح يسار */
         font-size: 0.97em !important;
-        bottom: 11vw !important;
+        bottom: 12vw !important;/* ← عدل هون: قلل الرقم الاسم ينزل لتحت */
         text-align: left !important;
       }
     }
