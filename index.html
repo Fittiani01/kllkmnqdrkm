@@ -10,12 +10,13 @@
       font-weight: bold;
     }
     body {
-      background: #ddebf2;
+      background: #f6f6f6;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
-      margin: 0;
-      padding: 0;
       direction: rtl;
       text-align: center;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
     }
     .container {
       margin: 40px auto;
@@ -25,166 +26,69 @@
       max-width: 950px;
       padding: 24px 16px;
     }
-    .notice-box {
-      margin: 0 auto 32px auto;
-      background: #fde7f0;
-      border-radius: 16px;
-      padding: 18px 6px 12px 6px;
-      max-width: 1200px;
-      color: #b01e55;
-      font-size: 1.09em;
-      line-height: 1.6;
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
-      border: 1.5px solid #fad1e0;
-    }
-    .main-title {
-      font-size: 2em;
-      margin-bottom: 20px;
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
-    }
-    .input-row {
-      margin: 20px auto 18px auto;
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .input-row input {
-      padding: 11px 22px;
-      border-radius: 8px;
-      border: 1px solid #b01e55;
-      font-size: 1.13em;
-      min-width: 180px;
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
-      text-align: center;
-    }
     .certificate-preview {
       position: relative;
       width: 900px;
       max-width: 98vw;
-      aspect-ratio: 900/650;
       margin: 36px auto 25px auto;
       background: #eee;
       border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 2px 14px #e6d4db90;
       min-height: 650px;
+      box-shadow: 0 2px 14px #e6d4db90;
     }
     .certificate-preview img {
-      position: absolute;
-      inset: 0;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 14px;
-      z-index: 1;
       display: block;
+      border-radius: 14px;
     }
+    /* اسم المعلم بالنص */
     .name-teacher {
       position: absolute;
-      top: 43.5%;
-      left: 0;
-      width: 100%;
-      font-size: 2vw;
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
+      top: 39%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      font-size: 1.4em;
       color: #b01e55;
+      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       font-weight: bold;
       text-align: center;
       pointer-events: none;
       user-select: none;
-      direction: rtl;
-      line-height: 1.2;
-      z-index: 2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    /* اسم الطالب ثابت كنسبة من ارتفاع الشهادة يسار تحت */
-    .bottom-bar {
+    /* سطر الطالب يسار تحت */
+    .student-row {
       position: absolute;
-      left: 5.5%;
-      bottom: 8%;
-      z-index: 2;
+      bottom: 6.5%;
+      left: 7%;
       display: flex;
-      align-items: flex-end;
-      gap: 7px;
-    }
-    .student-label {
+      align-items: center;
+      font-size: 1.08em;
       color: #b01e55;
-      font-size: 1.25em;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       font-weight: bold;
+      text-align: left;
+      gap: 0.4em;
+      direction: rtl;
       pointer-events: none;
       user-select: none;
       white-space: nowrap;
     }
-    .student-name {
-      color: #b01e55;
-      font-size: 1.25em;
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
-      font-weight: bold;
-      pointer-events: none;
-      user-select: none;
-      margin-right: 5px;
-      white-space: nowrap;
-    }
-    .download-btn {
-      background: #b01e55;
-      color: #fff;
-      font-size: 1.19em;
-      padding: 13px 38px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
-      margin-top: 20px;
-      transition: background 0.2s;
-    }
-    .download-btn:hover {
-      background: #920b3a;
-    }
-    @media (max-width: 700px) {
-      .certificate-preview { min-width: 200px; }
-      .name-teacher { font-size: 4vw;}
-      .bottom-bar { left: 6vw; bottom: 7vw;}
-      .student-label, .student-name { font-size: 4vw;}
+    @media (max-width: 600px) {
+      .container { padding: 8px 2px; }
+      .certificate-preview { width: 99vw; min-width: 220px; min-height: 55vw; }
+      .name-teacher { font-size: 1em; width: 98%; top: 38%; }
+      .student-row { font-size: 0.91em; bottom: 7vw; left: 5vw;}
     }
   </style>
 </head>
 <body>
-  <div class="notice-box">
-    جمعية المبادرات المتميزة في المسؤولية الاجتماعية – مبادر<br>
-    أطلق حملة كلنا نقدرك لتكريم أصحاب الأثر والتأثير.<br>
-    لكل من أثار دربنا بعلمه... هذا الامتنان لا يُطفأ.
-  </div>
   <div class="container">
-    <div class="main-title">شهادة تقدير</div>
-    <div class="input-row">
-      <input id="studentName" type="text" placeholder="اسم الطالب" oninput="updateNames()" />
-      <input id="teacherName" type="text" placeholder="اسم المعلم" oninput="updateNames()" />
-    </div>
-    <div class="certificate-preview" id="certificatePreview">
-      <img src="certificate.png" alt="الشهادة">
-      <div class="name-teacher" id="previewTeacher"></div>
-      <div class="bottom-bar">
-        <span class="student-label">ابنك الطالب /</span>
-        <span class="student-name" id="previewStudent"></span>
-      </div>
-    </div>
-    <button class="download-btn" onclick="downloadCertificate()">تحميل صورة الشهادة</button>
-  </div>
-  <script>
-    function updateNames() {
-      document.getElementById('previewTeacher').textContent = document.getElementById('teacherName').value;
-      document.getElementById('previewStudent').textContent = document.getElementById('studentName').value;
-    }
-    function downloadCertificate() {
-      const certificate = document.getElementById('certificatePreview');
-      html2canvas(certificate, { useCORS: true, scale: 2 }).then(function(canvas) {
-        const link = document.createElement('a');
-        link.download = 'certificate.png';
-        link.href = canvas.toDataURL();
-        link.click();
-      });
-    }
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-</body>
-</html>
+    <h2>شهادة تقدير</h2>
+    <div style="margin-bottom:18px;">
+      <input id="teacherName" type="text" placeholder="اسم المعلم" oninput="updateNames()" style="padding:11px 18px; border-radius:8px; border:1px solid #b01e55; font-size:1.1em; min-width:150px; margin:2px;">
+      <input id="stu
