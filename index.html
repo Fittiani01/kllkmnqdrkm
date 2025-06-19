@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>شهادة تقدير</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     @font-face {
       font-family: 'BahijBold';
@@ -13,11 +12,18 @@
     body {
       background: #f6f6f6;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
-      direction: rtl;
-      text-align: center;
       margin: 0;
       padding: 0;
-      min-height: 100vh;
+      direction: rtl;
+      text-align: center;
+    }
+    .container {
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 16px #0001;
+      max-width: 950px;
+      padding: 24px 16px;
     }
     .notice-box {
       margin: 0 auto 32px auto;
@@ -30,14 +36,6 @@
       line-height: 1.6;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       border: 1.5px solid #fad1e0;
-    }
-    .container {
-      margin: 40px auto;
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 2px 16px #0001;
-      max-width: 950px;
-      padding: 24px 16px;
     }
     .main-title {
       font-size: 2em;
@@ -56,35 +54,38 @@
       border-radius: 8px;
       border: 1px solid #b01e55;
       font-size: 1.13em;
-      min-width: 120px;
+      min-width: 180px;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       text-align: center;
     }
     .certificate-preview {
       position: relative;
-      width: 700px;
-      max-width: 96vw;
+      width: 900px;
+      max-width: 98vw;
+      aspect-ratio: 900/650;
       margin: 36px auto 25px auto;
       background: #eee;
       border-radius: 14px;
       overflow: hidden;
       box-shadow: 0 2px 14px #e6d4db90;
-      min-height: 520px;
-      aspect-ratio: 900 / 650;
+      min-height: 650px;
     }
     .certificate-preview img {
       width: 100%;
-      height: auto;
-      display: block;
+      height: 100%;
+      object-fit: cover;
       border-radius: 14px;
+      display: block;
     }
     /* اسم المعلم بالنص */
     .name-teacher {
       position: absolute;
-      top: 41%;
+      top: 41.5%;  /* نسبة من ارتفاع الصورة */
       left: 0;
       width: 100%;
-      font-size: 1.18em;
+      font-size: 2.1vw;
+      min-font-size: 20px;
+      max-font-size: 38px;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       color: #b01e55;
       font-weight: bold;
@@ -92,53 +93,24 @@
       pointer-events: none;
       user-select: none;
       direction: rtl;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      transform: translateY(-30%); /* نزل شوي فقط */
+      line-height: 1.2;
     }
-    /* اسم الطالب يمين تحت */
-    .name-student {
+    /* اسم الطالب في اليسار تحت */
+    .name-student-block {
       position: absolute;
-      right: 8.5%;
-      bottom: 7%;
-      width: 41%;
-      font-size: 1em;
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
+      left: 5.7%;   /* من اليسار */
+      bottom: 7%;  /* من تحت */
+      text-align: left;
+      font-size: 1.4vw;
+      min-font-size: 18px;
+      max-font-size: 30px;
       color: #b01e55;
-      font-weight: bold;
-      text-align: right;
+      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       pointer-events: none;
       user-select: none;
       direction: rtl;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: flex;
-      align-items: flex-end;
-      gap: 6px;
-    }
-    .name-student .prefix {
-      font-size: 0.94em;
-      opacity: 0.7;
-      margin-left: 4px;
-      font-weight: normal;
-    }
-    @media (max-width: 800px) {
-      .container { padding: 8px 1vw; }
-      .certificate-preview { width: 99vw; min-width: 200px; }
-      .name-teacher { font-size: 0.98em; top: 40%; }
-      .name-student { font-size: 0.91em; bottom: 6.7%; right: 8vw; width: 53vw;}
-    }
-    @media (max-width: 500px) {
-      .container { padding: 5px 1vw; }
-      .certificate-preview { min-width: 80vw; min-height: 120px;}
-      .name-teacher { font-size: 0.77em; }
-      .name-student { font-size: 0.77em; right: 4vw; width: 61vw;}
-      .input-row input { font-size: 1em; padding: 8px 5px;}
-      .main-title { font-size: 1.4em;}
-      .download-btn { font-size: 1em; padding: 10px 20px; }
-      .notice-box { font-size: 0.92em; padding: 8px 2px;}
+      line-height: 1.1;
     }
     .download-btn {
       background: #b01e55;
@@ -149,10 +121,17 @@
       border-radius: 8px;
       cursor: pointer;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
+      margin-top: 20px;
       transition: background 0.2s;
-      margin-bottom: 0px;
     }
-    .download-btn:hover { background: #920b3a; }
+    .download-btn:hover {
+      background: #920b3a;
+    }
+    @media (max-width: 700px) {
+      .certificate-preview { width: 99vw; min-width: 200px; }
+      .name-teacher { font-size: 4vw;}
+      .name-student-block { font-size: 2.9vw;}
+    }
   </style>
 </head>
 <body>
@@ -170,16 +149,17 @@
     <div class="certificate-preview" id="certificatePreview">
       <img src="certificate.png" alt="الشهادة">
       <div class="name-teacher" id="previewTeacher"></div>
-      <div class="name-student" id="previewStudent"><span class="prefix">/ ابنك الطالب</span><span class="student-text"></span></div>
+      <div class="name-student-block">
+        <span>ابنك الطالب/</span>
+        <span id="previewStudent"></span>
+      </div>
     </div>
     <button class="download-btn" onclick="downloadCertificate()">تحميل صورة الشهادة</button>
   </div>
   <script>
     function updateNames() {
       document.getElementById('previewTeacher').textContent = document.getElementById('teacherName').value;
-      var studentVal = document.getElementById('studentName').value;
-      document.querySelector('.student-text').textContent = studentVal;
-      document.querySelector('.name-student').style.display = studentVal ? "flex" : "none";
+      document.getElementById('previewStudent').textContent = document.getElementById('studentName').value;
     }
     function downloadCertificate() {
       const certificate = document.getElementById('certificatePreview');
@@ -190,8 +170,6 @@
         link.click();
       });
     }
-    // لإظهار الاسم الأول بشكل افتراضي لو حبيت
-    updateNames();
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </body>
