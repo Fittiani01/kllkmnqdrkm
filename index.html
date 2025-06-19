@@ -70,20 +70,22 @@
       overflow: hidden;
       box-shadow: 0 2px 14px #e6d4db90;
       min-height: 650px;
+      aspect-ratio: 900 / 650;
     }
     .certificate-preview img {
       width: 100%;
       display: block;
       border-radius: 14px;
+      pointer-events: none;
+      user-select: none;
     }
-    /* اسم المعلم بالنص */
+    /* اسم المعلم في منتصف الشهادة */
     .name-teacher {
       position: absolute;
-      top: 265px;              /* ← عدل هون: نزّل أو ارفع اسم المعلم */
+      top: 265px;   /* عدل هنا للموقع على اللابتوب */
       left: 0;
       width: 100%;
-      font-size: 1.4em;        /* ← عدل هون: حجم الخط */
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
+      font-size: 1.4em;
       color: #b01e55;
       font-weight: bold;
       text-align: center;
@@ -94,14 +96,13 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    /* اسم الطالب */
+    /* اسم الطالب في اليمين تحت */
     .name-student {
       position: absolute;
-      right: 110px;            /* ← عدل هون: زح الاسم يمين أو شمال */
-      bottom: 65px;            /* ← عدل هون: نزّل أو ارفع اسم الطالب */
+      right: 380px;   /* عدل هنا للموقع على اللابتوب */
+      bottom: 60px;   /* عدل هنا للموقع على اللابتوب */
       width: 45%;
-      font-size: 1.18em;       /* ← عدل هون: حجم الخط */
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
+      font-size: 1.15em;
       color: #b01e55;
       font-weight: bold;
       text-align: right;
@@ -111,10 +112,6 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-    }
-    .student-label {
-      display: inline;
-      color: #b01e55;
     }
     .action-row {
       display: flex;
@@ -140,19 +137,25 @@
       background: #920b3a;
     }
 
-    /* responsive موبايل */
+    /* ------- responsive موبايل ------ */
     @media (max-width: 600px) {
-      .certificate-preview { width: 99vw; min-width: 220px; min-height: 62vw; }
-      .name-teacher {
-        top: 48vw !important;   /* ← عدل هون: زود الرقم ينزل الاسم تحت */
-        font-size: 1em !important;
+      .certificate-preview {
+        width: 99vw;
+        min-width: 220px;
+        min-height: 62vw;
       }
+      /* ↓↓↓ عدل رقم top ↓↓↓  إذا بدك اسم المعلم ينزل أو يطلع */
+      .name-teacher {
+        top: 33%;     /* نزّل الرقم ↓ ينزل الاسم، زيد الرقم ↑ الاسم يطلع */
+        font-size: 1.08em;
+      }
+      /* ↓↓↓ عدل left والـ bottom ↓↓↓  إذا بدك اسم الطالب يزيح شمال أو ينزل */
       .name-student {
-        right: auto !important;
-        left: 10vw !important;  /* ← عدل هون: زود الرقم الاسم يزيح يسار */
-        font-size: 0.97em !important;
-        bottom: 13vw !important;/* ← عدل هون: قلل الرقم الاسم ينزل لتحت */
-        text-align: left !important;
+        left: 7%;    /* زيد الرقم: الاسم يزيح شمال / نقص: الاسم يرجع يمين */
+        right: auto;
+        bottom: 12%; /* زيد الرقم: الاسم ينزل لتحت / نقص: الاسم يطلع لفوق */
+        font-size: 1em;
+        text-align: left;
       }
     }
   </style>
@@ -166,21 +169,18 @@
   <div class="container">
     <div class="main-title">شهادة تقدير</div>
     <div class="input-row">
-      <input id="teacherName" type="text" placeholder="اسم المعلم" oninput="updateNames()" />
       <input id="studentName" type="text" placeholder="اسم الطالب" oninput="updateNames()" />
+      <input id="teacherName" type="text" placeholder="اسم المعلم" oninput="updateNames()" />
     </div>
     <div class="certificate-preview" id="certificatePreview">
       <img src="certificate.png" alt="الشهادة">
       <div class="name-teacher" id="previewTeacher"></div>
-      <div class="name-student">
-        <span class="student-label">ابنك الطالب / </span><span id="previewStudent"></span>
-      </div>
+      <div class="name-student" id="previewStudent"></div>
     </div>
     <div class="action-row">
       <button class="download-btn" onclick="downloadCertificate()">تحميل صورة الشهادة</button>
     </div>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script>
     function updateNames() {
       document.getElementById('previewTeacher').textContent = document.getElementById('teacherName').value;
@@ -196,5 +196,6 @@
       });
     }
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </body>
 </html>
