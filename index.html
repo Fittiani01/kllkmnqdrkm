@@ -10,79 +10,86 @@
       font-weight: bold;
     }
     body {
-      background: #f6f6f6;
+      background: linear-gradient(140deg, #faf6fa 40%, #e4e8ef 100%);
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       direction: rtl;
       text-align: center;
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      overflow-x: hidden;
-    }
-    .notice-box {
-      margin: 0 auto 32px auto;
-      background: #fde7f0;
-      border-radius: 16px;
-      padding: 18px 6px 12px 6px;
-      max-width: 1200px;
-      color: #b01e55;
-      font-size: 1.09em;
-      line-height: 1.6;
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
-      border: 1.5px solid #fad1e0;
+      height: 100vh;
+      overflow: hidden;  /* يمنع Scroll نهائيًا */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     .container {
-      margin: 40px auto;
       background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 2px 16px #0001;
-      max-width: 950px;
-      padding: 24px 16px;
+      border-radius: 22px;
+      box-shadow: 0 4px 32px #b01e5530, 0 2px 8px #0001;
+      max-width: 990px;
+      width: 100%;
+      padding: 10px 8px 8px 8px;
+      border: 1.5px solid #ede3e7;
+      margin: 0;
     }
-    .main-title {
+    .top-message {
+      margin-bottom: 18px;
+      color: #b01e55;
+      font-size: 1.09em;
+      line-height: 1.85em;
+      background: #faf6fa;
+      border-radius: 12px;
+      padding: 13px 7px 12px 7px;
+      border: 1.2px solid #f6dae4;
+      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
+    }
+    h2 {
+      margin-bottom: 16px;
+      margin-top: 8px;
       font-size: 2em;
-      margin-bottom: 20px;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
     }
     .input-row {
-      margin: 20px auto 18px auto;
+      margin: 10px auto 15px auto;
       display: flex;
       gap: 10px;
       justify-content: center;
       flex-wrap: wrap;
     }
     .input-row input {
-      padding: 11px 22px;
+      padding: 10px 18px;
       border-radius: 8px;
       border: 1px solid #b01e55;
-      font-size: 1.13em;
+      font-size: 1.1em;
       min-width: 180px;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       text-align: center;
     }
     .certificate-preview {
       position: relative;
-      width: 900px;
+      width: 900px;              /* ثابت على الشاشات الكبيرة */
       max-width: 98vw;
-      margin: 36px auto 25px auto;
+      margin: 35px auto 20px auto;
       background: #eee;
-      border-radius: 14px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 2px 14px #e6d4db90;
-      min-height: 650px;
+      box-shadow: 0 4px 24px #b01e5524;
+      border: 1.5px solid #f3e0ea;
+      transition: box-shadow 0.2s;
     }
     .certificate-preview img {
       width: 100%;
       display: block;
-      border-radius: 14px;
+      border-radius: 12px;
     }
-    /* اسم المعلم بالنص */
     .name-teacher {
       position: absolute;
-      top: 265px;   /* عدّل حسب تصميم الشهادة */
+      top: 260px;
       left: 0;
       width: 100%;
-      font-size: 1.35em;
+      font-size: 1.4em;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       color: #b01e55;
       font-weight: bold;
@@ -90,17 +97,13 @@
       pointer-events: none;
       user-select: none;
       direction: rtl;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
-    /* اسم الطالب في الزاوية اليمنى السفلى */
     .name-student {
       position: absolute;
-      right: 70px;
-      bottom: 57px;
-      width: 42%;
-      font-size: 1.12em;
+      right: 590px;
+      bottom: 75px;
+      width: 45%;
+      font-size: 1.2em;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       color: #b01e55;
       font-weight: bold;
@@ -115,43 +118,52 @@
     .download-btn {
       background: #b01e55;
       color: #fff;
-      font-size: 1.19em;
-      padding: 13px 38px;
+      font-size: 1.2em;
+      padding: 12px 32px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      margin-top: 18px;
+      margin-bottom: 12px;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
-      transition: background 0.2s;
-      margin-bottom: 0px;
-      margin-top: 15px;
+      box-shadow: 0 2px 10px #b01e5516;
+      transition: background 0.18s;
     }
     .download-btn:hover {
-      background: #920b3a;
+      background: #801242;
     }
-    @media (max-width: 1100px) {
-      .certificate-preview { width: 99vw; min-width: 250px; }
-      .name-teacher { font-size: 1.08em; top: 26vw; }
-      .name-student { right: 7vw; font-size: 0.95em; bottom: 6vw; width: 49%; }
+    @media (max-width: 1000px) {
+      .certificate-preview {
+        width: 98vw !important;
+        min-width: 0 !important;
+      }
+      .name-teacher, .name-student {
+        font-size: 1.1em !important;
+      }
     }
     @media (max-width: 650px) {
-      .certificate-preview { width: 99vw; min-width: 210px; min-height: 230px; }
-      .name-teacher { font-size: 0.95em; top: 25vw; }
-      .name-student { right: 4vw; font-size: 0.78em; bottom: 3vw; width: 63%; }
-      .container { padding: 10px 2px; }
+      .certificate-preview {
+        width: 99vw !important;
+        min-width: 0 !important;
+      }
+      .name-teacher, .name-student {
+        font-size: 1em !important;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="notice-box">
-    جمعية المبادرات المتميزة في المسؤولية الاجتماعية – مبادر<br>
-    أطلق حملة كلنا نقدرك لتكريم أصحاب الأثر والتأثير.<br>
-    لكل من أثار دربنا بعلمه... هذا الامتنان لا يُطفأ.
-  </div>
   <div class="container">
-    <div class="main-title">شهادة تقدير</div>
+    <!-- النص التوضيحي فوق الشهادة -->
+    <div class="top-message">
+      جمعية المبادرات المتميزة في المسؤولية الاجتماعية – مبادر<br>
+      أطلق حملة <b>كلنا نقدرك</b> لتكريم أصحاب الأثر والتفاني.<br>
+      <span style="color:#666;font-size:.96em">لكل من أنار دربنا بعلمه... هذا الامتنان لا يُطفأ.</span>
+    </div>
+    <h2>شهادة تقدير</h2>
     <div class="input-row">
-      <input id="studentName" type="text" placeholder="اسم الطالب" oninput="updateNames()" />
       <input id="teacherName" type="text" placeholder="اسم المعلم" oninput="updateNames()" />
+      <input id="studentName" type="text" placeholder="اسم الطالب" oninput="updateNames()" />
     </div>
     <div class="certificate-preview" id="certificatePreview">
       <img src="certificate.png" alt="الشهادة">
