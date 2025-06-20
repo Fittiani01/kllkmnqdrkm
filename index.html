@@ -70,22 +70,19 @@
       overflow: hidden;
       box-shadow: 0 2px 14px #e6d4db90;
       min-height: 650px;
-      aspect-ratio: 900 / 650;
     }
     .certificate-preview img {
       width: 100%;
       display: block;
       border-radius: 14px;
-      pointer-events: none;
-      user-select: none;
     }
-    /* اسم المعلم في منتصف الشهادة */
+    /* ----- اسم المعلم ----- */
     .name-teacher {
       position: absolute;
-      top: 265px;   /* عدل هنا للموقع على اللابتوب */
+      top: 265px;  /* كمبيوتر: عدّل إذا بدك الاسم ينزل أو يطلع */
       left: 0;
       width: 100%;
-      font-size: 1.4em;
+      font-size: 1.25em;
       color: #b01e55;
       font-weight: bold;
       text-align: center;
@@ -96,13 +93,13 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    /* اسم الطالب في اليمين تحت */
+    /* ----- اسم الطالب ----- */
     .name-student {
       position: absolute;
-      right: 380px;   /* عدل هنا للموقع على اللابتوب */
-      bottom: 60px;   /* عدل هنا للموقع على اللابتوب */
+      right: 380px;   /* كمبيوتر: زيد الرقم الاسم يزيح يمين */
+      bottom: 75px;   /* كمبيوتر: زيد الرقم الاسم ينزل لتحت */
       width: 45%;
-      font-size: 1.15em;
+      font-size: 1.18em;
       color: #b01e55;
       font-weight: bold;
       text-align: right;
@@ -112,14 +109,6 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-    }
-    .action-row {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 24px;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
     }
     .download-btn {
       background: #b01e55;
@@ -137,25 +126,27 @@
       background: #920b3a;
     }
 
-    /* ------- responsive موبايل ------ */
+    /* -------- Responsive لموبايل فقط -------- */
     @media (max-width: 600px) {
       .certificate-preview {
         width: 99vw;
         min-width: 220px;
         min-height: 62vw;
       }
-      /* ↓↓↓ عدل رقم top ↓↓↓  إذا بدك اسم المعلم ينزل أو يطلع */
       .name-teacher {
-        top: 27%;     /* نزّل الرقم ↓ ينزل الاسم، زيد الرقم ↑ الاسم يطلع */
+        top: 38vw;       /* عدل الرقم: نزّل/اطلع الاسم تحت العنوان */
+        left: 0;
+        width: 100%;
         font-size: 1.08em;
+        text-align: center;
       }
-      /* ↓↓↓ عدل left والـ bottom ↓↓↓  إذا بدك اسم الطالب يزيح شمال أو ينزل */
       .name-student {
-        left: 7%;    /* زيد الرقم: الاسم يزيح شمال / نقص: الاسم يرجع يمين */
+        left: 10vw;      /* عدل الرقم: زيد الاسم يروح شمال */
         right: auto;
-        bottom: 12%; /* زيد الرقم: الاسم ينزل لتحت / نقص: الاسم يطلع لفوق */
+        bottom: 10vw;    /* عدل الرقم: زيد الاسم ينزل لتحت */
         font-size: 1em;
         text-align: left;
+        width: 70vw;
       }
     }
   </style>
@@ -177,10 +168,9 @@
       <div class="name-teacher" id="previewTeacher"></div>
       <div class="name-student" id="previewStudent"></div>
     </div>
-    <div class="action-row">
-      <button class="download-btn" onclick="downloadCertificate()">تحميل صورة الشهادة</button>
-    </div>
+    <button class="download-btn" onclick="downloadCertificate()">تحميل صورة الشهادة</button>
   </div>
+
   <script>
     function updateNames() {
       document.getElementById('previewTeacher').textContent = document.getElementById('teacherName').value;
