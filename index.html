@@ -139,27 +139,41 @@
     }
 
     /* ------------- Responsive = شاشة موبايل ------------- */
-    @media (max-width: 600px) {
-      .certificate-preview {
-        width: 99vw;
-        min-width: 220px;
-        min-height: 65vw;
-      }
-      .certificate-names {
-        /* نفس overlay الاسماء */
-      }
-      .name-teacher {
-        margin-top: 140px; /* عدل هنا: زيد الرقم ينزل الاسم لتحت على الموبايل */
-        font-size: 1em;
-      }
-      .name-student-row {
-        margin-bottom: 30px; /* قلل أو زيد يطلع الاسم فوق أو ينزل */
-      }
-      .name-student {
-        margin-right: 13vw; /* زيد الرقم يزيح الاسم عالشمال، قلله يرجعه لليمين */
-        font-size: 1em;
-      }
-    }
+   /* فقط للموبايل - شاشات أصغر من 600px */
+@media (max-width: 600px) {
+
+  /* حجم الشهادة على الموبايل */
+  .certificate-preview{
+    width: 99vw;
+    min-width: 220px;
+    /* ثبّت نسبة الطول للعرض (aspect-ratio) عشان يظل الارتفاع معروف */
+    aspect-ratio: 1.38;   /* 900/650 تقريباً */
+  }
+
+  /* ---------- اسم المعلم ---------- */
+  .name-teacher{
+    top: 34%;      /* زيد الرقم = ينزل لتحت | قلله = يطلع لفوق */
+    left: 0;
+    width: 100%;
+    font-size: 1em;
+    text-align: center;
+  }
+
+  /* ---------- اسم الطالب ---------- */
+  .name-student-row{
+    position: absolute;
+    bottom: 12%;   /* زيد الرقم = ينزل لتحت | قلله = يطلع لفوق */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .name-student{
+    margin-right: 10%;   /* زيد الرقم = يزيح الاسم لليسار */
+    font-size: .95em;
+    text-align: left;
+  }
+}
   </style>
 </head>
 <body>
