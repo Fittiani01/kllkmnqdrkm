@@ -9,6 +9,7 @@
       src: url('ArbFONTS-Bahij_TheSansArabic-Bold.ttf');
       font-weight: bold;
     }
+
     body {
       background: linear-gradient(140deg, #faf6fa 40%, #e4e8ef 100%);
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
@@ -18,12 +19,13 @@
       padding: 0;
       min-height: 100vh;
       height: 100vh;
-      overflow: hidden;  /* يمنع Scroll نهائيًا */
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
     }
+
     .container {
       background: #fff;
       border-radius: 22px;
@@ -34,6 +36,7 @@
       border: 1.5px solid #ede3e7;
       margin: 0;
     }
+
     .top-message {
       margin-bottom: 18px;
       color: #b01e55;
@@ -43,14 +46,14 @@
       border-radius: 12px;
       padding: 13px 7px 12px 7px;
       border: 1.2px solid #f6dae4;
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
     }
+
     h2 {
       margin-bottom: 16px;
       margin-top: 8px;
       font-size: 2em;
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
     }
+
     .input-row {
       margin: 10px auto 15px auto;
       display: flex;
@@ -58,18 +61,19 @@
       justify-content: center;
       flex-wrap: wrap;
     }
+
     .input-row input {
       padding: 10px 18px;
       border-radius: 8px;
       border: 1px solid #b01e55;
       font-size: 1.1em;
       min-width: 180px;
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       text-align: center;
     }
+
     .certificate-preview {
       position: relative;
-      width: 900px;              /* ثابت على الشاشات الكبيرة */
+      width: 900px;
       max-width: 98vw;
       margin: 35px auto 20px auto;
       background: #eee;
@@ -77,44 +81,43 @@
       overflow: hidden;
       box-shadow: 0 4px 24px #b01e5524;
       border: 1.5px solid #f3e0ea;
-      transition: box-shadow 0.2s;
     }
+
     .certificate-preview img {
       width: 100%;
       display: block;
       border-radius: 12px;
     }
+
     .name-teacher {
       position: absolute;
       top: 260px;
       left: 0;
       width: 100%;
       font-size: 1.4em;
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       color: #b01e55;
       font-weight: bold;
       text-align: center;
       pointer-events: none;
       user-select: none;
-      direction: rtl;
     }
+
     .name-student {
       position: absolute;
       right: 590px;
       bottom: 75px;
       width: 45%;
       font-size: 1.2em;
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       color: #b01e55;
       font-weight: bold;
       text-align: right;
       pointer-events: none;
       user-select: none;
-      direction: rtl;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
     .download-btn {
       background: #b01e55;
       color: #fff;
@@ -125,28 +128,27 @@
       cursor: pointer;
       margin-top: 18px;
       margin-bottom: 12px;
-      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       box-shadow: 0 2px 10px #b01e5516;
       transition: background 0.18s;
     }
+
     .download-btn:hover {
       background: #801242;
     }
-    @media (max-width: 1000px) {
+
+    /* Responsive Fixes */
+    @media (max-width: 768px) {
       .certificate-preview {
-        width: 98vw !important;
-        min-width: 0 !important;
+        width: 99vw;
       }
-      .name-teacher, .name-student {
-        font-size: 1.1em !important;
+
+      .name-teacher {
+        top: 240px !important;  /* نزّل الاسم شوي */
       }
-    }
-    @media (max-width: 650px) {
-      .certificate-preview {
-        width: 99vw !important;
-        min-width: 0 !important;
-      }
-      .name-teacher, .name-student {
+
+      .name-student {
+        right: 25% !important;  /* زيّحه يسار */
+        bottom: 78px !important; /* نزّل شوي */
         font-size: 1em !important;
       }
     }
@@ -154,7 +156,6 @@
 </head>
 <body>
   <div class="container">
-    <!-- النص التوضيحي فوق الشهادة -->
     <div class="top-message">
       جمعية المبادرات المتميزة في المسؤولية الاجتماعية – مبادر<br>
       أطلق حملة <b>كلنا نقدرك</b> لتكريم أصحاب الأثر والتفاني.<br>
