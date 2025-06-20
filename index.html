@@ -70,83 +70,94 @@
       overflow: hidden;
       box-shadow: 0 2px 14px #e6d4db90;
       min-height: 650px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
     }
     .certificate-preview img {
       width: 100%;
       display: block;
       border-radius: 14px;
     }
-    /* ----- اسم المعلم ----- */
-    .name-teacher {
+
+    /* ---------- حل جذري لمكان الاسماء داخل الشهادة ---------- */
+    .certificate-names {
       position: absolute;
-      top: 265px;  /* كمبيوتر: عدّل إذا بدك الاسم ينزل أو يطلع */
+      top: 0;
       left: 0;
       width: 100%;
-      font-size: 1.25em;
+      height: 100%;
+      pointer-events: none;
+      /* اسماء overlay فوق الشهادة */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: stretch;
+      z-index: 2;
+    }
+    /* اسم المعلم */
+    .name-teacher {
+      margin-top: 165px; /* عدل هنا نزّل الاسم أو ارفعه لنسخة اللابتوب */
+      font-size: 1.4em;
       color: #b01e55;
       font-weight: bold;
       text-align: center;
-      pointer-events: none;
+      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       user-select: none;
       direction: rtl;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    /* ----- اسم الطالب ----- */
+    /* اسم الطالب */
+    .name-student-row {
+      display: flex;
+      width: 100%;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 85px; /* عدل هنا اذا بدك تطلع او تنزل */
+    }
     .name-student {
-      position: absolute;
-      right: 380px;   /* كمبيوتر: زيد الرقم الاسم يزيح يمين */
-      bottom: 75px;   /* كمبيوتر: زيد الرقم الاسم ينزل لتحت */
-      width: 45%;
-      font-size: 1.18em;
+      font-size: 1.15em;
       color: #b01e55;
       font-weight: bold;
-      text-align: right;
-      pointer-events: none;
-      user-select: none;
+      text-align: left;  /* عالشمال */
+      font-family: 'BahijBold', Tahoma, Arial, sans-serif;
       direction: rtl;
+      margin-right: 30px; /* زيّح الاسم عالشمال أكثر، عدل الرقم */
+      user-select: none;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .download-btn {
-      background: #b01e55;
-      color: #fff;
-      font-size: 1.19em;
-      padding: 13px 38px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
+    .student-label {
+      font-size: 1em;
+      color: #333;
+      margin-right: 5px;
       font-family: 'BahijBold', Tahoma, Arial, sans-serif;
-      transition: background 0.2s;
-      margin-bottom: 0px;
-    }
-    .download-btn:hover {
-      background: #920b3a;
     }
 
-    /* -------- Responsive لموبايل فقط -------- */
+    /* ------------- Responsive = شاشة موبايل ------------- */
     @media (max-width: 600px) {
       .certificate-preview {
         width: 99vw;
         min-width: 220px;
-        min-height: 62vw;
+        min-height: 65vw;
+      }
+      .certificate-names {
+        /* نفس overlay الاسماء */
       }
       .name-teacher {
-        top: 38vw;       /* عدل الرقم: نزّل/اطلع الاسم تحت العنوان */
-        left: 0;
-        width: 100%;
-        font-size: 1.08em;
-        text-align: center;
+        margin-top: 120px; /* عدل هنا: زيد الرقم ينزل الاسم لتحت على الموبايل */
+        font-size: 1em;
+      }
+      .name-student-row {
+        margin-bottom: 30px; /* قلل أو زيد يطلع الاسم فوق أو ينزل */
       }
       .name-student {
-        left: 10vw;      /* عدل الرقم: زيد الاسم يروح شمال */
-        right: auto;
-        bottom: 10vw;    /* عدل الرقم: زيد الاسم ينزل لتحت */
+        margin-right: 8vw; /* زيد الرقم يزيح الاسم عالشمال، قلله يرجعه لليمين */
         font-size: 1em;
-        text-align: left;
-        width: 70vw;
       }
     }
   </style>
@@ -160,17 +171,22 @@
   <div class="container">
     <div class="main-title">شهادة تقدير</div>
     <div class="input-row">
-      <input id="studentName" type="text" placeholder="اسم الطالب" oninput="updateNames()" />
       <input id="teacherName" type="text" placeholder="اسم المعلم" oninput="updateNames()" />
+      <input id="studentName" type="text" placeholder="اسم الطالب" oninput="updateNames()" />
     </div>
     <div class="certificate-preview" id="certificatePreview">
       <img src="certificate.png" alt="الشهادة">
-      <div class="name-teacher" id="previewTeacher"></div>
-      <div class="name-student" id="previewStudent"></div>
+      <!-- طبقة الاسماء -->
+      <div class="certificate-names">
+        <div class="name-teacher" id="previewTeacher"></div>
+        <div class="name-student-row">
+          <span class="student-label">ابنك الطالب /</span>
+          <span class="name-student" id="previewStudent"></span>
+        </div>
+      </div>
     </div>
     <button class="download-btn" onclick="downloadCertificate()">تحميل صورة الشهادة</button>
   </div>
-
   <script>
     function updateNames() {
       document.getElementById('previewTeacher').textContent = document.getElementById('teacherName').value;
